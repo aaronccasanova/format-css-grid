@@ -1,6 +1,6 @@
 {
   "name": "format-css-grid",
-  "version": "0.0.3",
+  "version": "0.1.0",
   "description": "Opinionated formatting utilities for CSS Grid.",
   "engines": {
     "node": ">= 12"
