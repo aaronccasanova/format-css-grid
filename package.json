@@ -20,7 +20,7 @@
   "types": "dist/types.d.ts",
   "scripts": {
     "watch": "parcel watch",
-    "build": "parcel build ",
+    "build": "parcel build",
     "test": "jest",
     "lint": "eslint src/**/*.ts",
     "check": "tsc --noEmit",

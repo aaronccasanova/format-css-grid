@@ -31,5 +31,10 @@ module.exports = {
     ],
     semi: 'off',
     'no-plusplus': ['error', { allowForLoopAfterthoughts: true }],
+    'function-paren-newline': 'off',
+    'implicit-arrow-linebreak': 'off',
+    'arrow-body-style': 'off',
+    'operator-linebreak': 'off',
+    'no-confusing-arrow': 'off',
   },
 }

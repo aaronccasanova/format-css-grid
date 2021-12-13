@@ -89,6 +89,26 @@ describe('formatGridTemplateAreas', () => {
       ])
     })
   })
+
+  describe('comments', () => {
+    it('extracts leading comment and formats rows', () => {
+      expect(
+        formatGridTemplateAreas('/* comment */"aa b" "c d"'),
+      ).toStrictEqual(['/* comment */', 'aa b', 'c  d'])
+    })
+
+    it('extracts trailing comment and formats rows', () => {
+      expect(
+        formatGridTemplateAreas('"aa b" "c d"/* comment */'),
+      ).toStrictEqual(['aa b', 'c  d', '/* comment */'])
+    })
+
+    it('extracts leading and trailing comments and formats rows', () => {
+      expect(
+        formatGridTemplateAreas('/* comment */"aa b"/* comment */"c d"'),
+      ).toStrictEqual(['/* comment */', 'aa b', '/* comment */', 'c  d'])
+    })
+  })
 })
 
 describe('getGridTemplateAreas', () => {
@@ -172,5 +192,29 @@ describe('getGridTemplateAreas', () => {
         singleQuote: true,
       }),
     ).toBe("\n  'a b'\n  'c d'")
+  })
+
+  it('formats leading comment and rows', () => {
+    expect(
+      getGridTemplateAreas({
+        value: '/* comment */"aa b" "c d"',
+      }),
+    ).toBe('\n  /* comment */\n  "aa b"\n  "c  d"')
+  })
+
+  it('formats trailing comment and rows', () => {
+    expect(
+      getGridTemplateAreas({
+        value: '"aa b" "c d"/* comment */',
+      }),
+    ).toBe('\n  "aa b"\n  "c  d"\n  /* comment */')
+  })
+
+  it('formats leading and trailing comments and rows', () => {
+    expect(
+      getGridTemplateAreas({
+        value: '/* comment */"aa b"/* comment */"c d"',
+      }),
+    ).toBe('\n  /* comment */\n  "aa b"\n  /* comment */\n  "c  d"')
   })
 })
